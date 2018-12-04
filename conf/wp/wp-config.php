@@ -1,5 +1,6 @@
 <?php
-
+define('WP_SITEURL','http://' . $_SERVER['HTTP_HOST'] . '/');
+define('WP_HOME','http://' . $_SERVER['HTTP_HOST'] . '/');
 include '.env.php';
 $table_prefix  = 'wp_';
 /** WordPress absolute path to the Wordpress directory. */
@@ -14,7 +15,6 @@ foreach( $server_opts as $option => $value ) {
      break;
       }
       }
-//      //END Really Simple SSL 
+//      //END Really Simple SSL
 /** Sets up WordPress vars and included files. */
 require_once(ABSPATH . 'wp-settings.php');
-
