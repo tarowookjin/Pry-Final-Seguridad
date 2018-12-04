@@ -43,7 +43,7 @@ services:
     image: redis
     restart: always
     volumes:
-      - ./conf/cache/redis2.conf:/var/lib/redis/redis.conf
+      - ./conf/cache/redis2.conf:/etc/redis/redis.conf
 
 volumes:
   db_data:
