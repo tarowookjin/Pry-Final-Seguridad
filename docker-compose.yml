@@ -40,11 +40,10 @@ services:
       - app
 
   cache:
-    image: redis
+    build:
+        context: ./conf/cache
+        dockerfile: Dockerfile
     restart: always
-    volumes:
-      - ./conf/cache/redis2.conf:/etc/redis/redis.conf
-
 volumes:
   db_data:
   wordpress_files:
