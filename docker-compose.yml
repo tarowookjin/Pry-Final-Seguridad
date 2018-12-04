@@ -28,9 +28,6 @@ services:
     volumes:
       - wordpress_files:/var/www/html
 
-  redis:
-    image: redis
-
   proxy:
     build:
       context:  ./conf/proxy
