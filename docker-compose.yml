@@ -18,7 +18,7 @@ services:
     environment:
       VIRTUAL_HOST: chenchenia.padoru
       WORDPRESS_DB_HOST: db:3306
-      WORDPRESS_DB_NAME: bd
+      WORDPRESS_DB_NAME: db
       WORDPRESS_DB_PASSWORD: seg123
       WORDPRESS_TABLE_PREFIX: wpt_
     expose:
