@@ -7,8 +7,8 @@ RUN apt-get update && \
         a2ensite default-ssl
 
 COPY ./modsecurity.conf /etc/modsecurity/modsecurity.conf
-#COPY ./security2.conf /etc/apache2/mods-enabled/security2.conf
-COPY ./seg.conf /etc/apache2/mods-enabled/security2.conf
+COPY ./security2.conf /etc/apache2/mods-enabled/security2.conf
+#COPY ./seg.conf /etc/apache2/mods-enabled/security2.conf
 COPY ./owasp-modsecurity-crs/crs-setup.conf /usr/share/modsecurity-crs/crs-setup.conf
 COPY ./owasp-modsecurity-crs /usr/share/modsecurity-crs
 
