@@ -13,7 +13,8 @@ services:
     depends_on:
       - db
       - redis
-    build: ./conf/wp
+    context: ./conf/wp
+    dockerfile: Dockerfile
     restart: always
     environment:
       VIRTUAL_HOST: chenchenia.padoru
@@ -21,9 +22,9 @@ services:
       WORDPRESS_DB_NAME: db
       WORDPRESS_DB_PASSWORD: seg123
       WORDPRESS_TABLE_PREFIX: wpt_
-    expose:
-      - "80"
-      - "443"
+    #expose:
+    #  - "80"
+    #  - "443"
     volumes:
       - wordpress_files:/var/www/html
 
@@ -35,7 +36,7 @@ services:
       context:  ./conf/proxy
       dockerfile: Dockerfile
     ports:
-      - "5959:80"
+      - "80:80"
       - "443:443"
     links:
       - app
