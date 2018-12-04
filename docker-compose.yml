@@ -1,4 +1,4 @@
-version: '3'
+version: '3.7'
 
 services:
   db:
@@ -43,7 +43,7 @@ services:
     image: redis
     restart: always
     volumes:
-      - ./conf/cache/redis.conf:/usr/local/etc/redis/redis.conf
+      - ./conf/cache/redis.conf:/etc/redisredis.conf
 
 volumes:
   db_data:
