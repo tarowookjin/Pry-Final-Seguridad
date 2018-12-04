@@ -14,7 +14,7 @@ services:
       - db
       - redis
     context: ./conf/wp
-    dockerfile: Dockerfile
+    dockerfile: dockerfile
     restart: always
     environment:
       VIRTUAL_HOST: chenchenia.padoru
