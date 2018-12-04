@@ -2,7 +2,7 @@
 FROM nginx
 
 #Llave TLS 1.2
-COPY ./certs/ /etc/nginx/ssl
+COPY ./cert/ /etc/nginx/ssl
 
 #Elimina default conf file y carpeta
 RUN rm /etc/nginx/conf.d/default.conf && rm -r /etc/nginx/conf.d
