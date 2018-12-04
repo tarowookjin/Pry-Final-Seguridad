@@ -12,7 +12,7 @@ services:
   app:
     depends_on:
       - db
-      - redis
+      - cache
     build: ./conf/wp
     restart: always
     environment:
