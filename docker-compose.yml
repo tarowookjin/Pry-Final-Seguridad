@@ -16,6 +16,7 @@ services:
     build: ./conf/wp
     restart: always
     environment:
+      VIRTUAL_HOST: chenchenia.dev
       WORDPRESS_DB_HOST: db:3306
       WORDPRESS_DB_NAME: bd
       WORDPRESS_DB_PASSWORD: seg123
