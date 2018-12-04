@@ -13,7 +13,9 @@ services:
     depends_on:
       - db
       - cache
-    build: ./conf/wp
+    build:
+      context: ./conf/wp
+      dockerfile: Dockerfile
     restart: always
     environment:
       VIRTUAL_HOST: chenchenia.padoru
