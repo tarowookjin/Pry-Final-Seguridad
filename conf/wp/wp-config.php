@@ -1,8 +1,8 @@
 <?php
-define('WP_SITEURL','http://' . $_SERVER['HTTP_HOST'] . '/');
-define('WP_HOME','http://' . $_SERVER['HTTP_HOST'] . '/');
+#define('WP_SITEURL','http://' . $_SERVER['HTTP_HOST'] . '/');
+#define('WP_HOME','http://' . $_SERVER['HTTP_HOST'] . '/');
 #define('WP_CACHE_KEY_SALT', 'chenchenia.padoru');
-define('WP_CACHE', true);
+#define('WP_CACHE', true);
 include '.env.php';
 $table_prefix  = 'wp_';
 /** WordPress absolute path to the Wordpress directory. */
