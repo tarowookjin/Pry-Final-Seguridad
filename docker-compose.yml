@@ -1,0 +1,50 @@
+version: '2'
+
+services:
+  db:
+    image: mariadb:latest
+    restart: always
+    volumes:
+      - db_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: seg123
+
+  app:
+    depends_on:
+      - db
+      - redis
+    build: ./conf/wp
+    restart: always
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_NAME: bd
+      WORDPRESS_DB_PASSWORD: seg123
+      WORDPRESS_TABLE_PREFIX: wpt_
+    expose:
+      - "80"
+      - "443"
+    volumes:
+      - wordpress_files:/var/www/html
+
+  redis:
+    image: redis
+
+  proxy:
+    build:
+      context:  ./conf/proxy
+      dockerfile: Dockerfile
+    ports:
+      - "5959:80"
+      - "443:443"
+    links:
+      - app
+
+  cache:
+    image: redis
+    restart: always
+    volumes:
+      - ./conf/cache/redis.conf:/etc/redis/redis.conf
+
+volumes:
+  db_data:
+  wordpress_files:
