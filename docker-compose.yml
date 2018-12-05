@@ -55,7 +55,7 @@ services:
     #volumes:
     #  - ./conf/cache/redis.conf::/usr/local/etc/redis/redis.conf
     networks:
-      - back:
+      - back
 
     #command: redis-server /usr/local/etc/redis/redis.conf
 
