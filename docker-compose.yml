@@ -1,5 +1,19 @@
 version: '3.5'
 
+networks:
+  back:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 142.2.0.0/16
+  front:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 142.1.0.0/16
+        
 services:
 #database
   db:
@@ -63,19 +77,6 @@ services:
 
 
 #IP
-networks:
-  back:
-    driver: bridge
-    ipam:
-      driver: default
-      config:
-        - subnet: 142.2.0.0/16
-  front:
-    driver: bridge
-    ipam:
-      driver: default
-      config:
-        - subnet: 142.1.0.0/16
 
 volumes:
   db_data:
