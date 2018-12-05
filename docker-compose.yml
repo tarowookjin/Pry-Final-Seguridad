@@ -62,18 +62,20 @@ services:
 
 #IP
   networks:
-    back:
-      driver: bridge
-      ipam:
-        driver: default
-        config:
-          - subnet: 142.2.0.0/16
     front:
       driver: bridge
       ipam:
         driver: default
         config:
-          - subnet: 142.1.0.0/16
+          - subnet: 172.16.238.0/24
+          gateway: 172.16.238.1
+    back:
+      driver: bridge
+      ipam:
+        driver: default
+        config:
+          - subnet: 172.17.238.0/24
+          gateway: 172.17.238.1
 
 volumes:
   db_data:
