@@ -46,7 +46,8 @@ services:
       - "80:80"
       - "443:443"
     networks:
-      - front
+      front:
+        ipv4_address: 142.1.0.20/16
 
 #redis
   cache:
