@@ -52,6 +52,8 @@ services:
 #redis
   cache:
     image: redis
+    depends_on:
+      - db
     #volumes:
     #  - ./conf/cache/redis.conf::/usr/local/etc/redis/redis.conf
     networks:
