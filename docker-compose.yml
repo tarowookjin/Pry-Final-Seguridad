@@ -57,7 +57,7 @@ services:
     networks:
       back:
         ipv4_address: 142.2.0.7
-    command: redis-server /usr/local/etc/redis/redis.conf
+    command: redis-server /etc/redis/redis.conf
 
 
 #IP
