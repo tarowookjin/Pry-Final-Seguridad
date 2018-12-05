@@ -68,7 +68,6 @@ services:
         driver: default
         config:
           - subnet: 142.2.0.0/16
-
     front:
       driver: bridge
       ipam:
