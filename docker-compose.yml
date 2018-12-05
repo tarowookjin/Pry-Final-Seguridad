@@ -62,18 +62,19 @@ services:
 
 #IP
   networks:
-      dark:
-          driver: bridge
-          ipam:
-              driver: default
-              config:
-                  - subnet: 142.2.0.0/16
-      light:
-          driver: bridge
-          ipam:
-             driver: default
-             config:
-                 - subnet: 142.1.0.0/16
+    front:
+      driver: bridge
+      ipam:
+        driver: default
+        config:
+          - subnet: 142.2.0.0/16
+    back:
+      driver: bridge
+      ipam:
+        driver: default
+        config:
+          - subnet: 142.1.0.0/16
+
 volumes:
   db_data:
   wordpress_files:
