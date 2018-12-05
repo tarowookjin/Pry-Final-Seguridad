@@ -13,7 +13,7 @@ networks:
       driver: default
       config:
         - subnet: 142.1.0.0/16
-        
+
 services:
 #database
   db:
@@ -23,6 +23,8 @@ services:
       - db_data:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: seg123
+    networks:
+      - back
 
 #Worpress
   app:
