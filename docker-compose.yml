@@ -54,18 +54,21 @@ services:
     image: redis
     #volumes:
     #  - ./conf/cache/redis.conf::/etc/redis/redis.conf
+    networks:
+      back:
+        ipv4_address: 142.2.0.7
     #command: redis-server /etc/redis/redis.conf
 
 
 #IP
 networks:
-  front:
+  back:
     driver: bridge
     ipam:
       driver: default
       config:
         - subnet: 142.2.0.0/16
-  back:
+  front:
     driver: bridge
     ipam:
       driver: default
