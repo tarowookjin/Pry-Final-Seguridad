@@ -1,6 +1,7 @@
-version: '3.3'
+version: '3.7'
 
 services:
+#database
   db:
     image: mariadb:latest
     restart: always
@@ -9,6 +10,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: seg123
 
+#Worpress
   app:
     depends_on:
       - db
@@ -19,7 +21,7 @@ services:
     restart: always
     environment:
       VIRTUAL_HOST: chenchenia.padoru
-      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_HOST: db
       WORDPRESS_DB_NAME: db
       WORDPRESS_DB_PASSWORD: seg123
       WORDPRESS_TABLE_PREFIX: wpt_
@@ -28,24 +30,51 @@ services:
     #  - "443"
     volumes:
       - wordpress_files:/var/www/html
+    networks:
+      - front
+      - back
 
+#Load_Balancer
   proxy:
     build:
       context:  ./conf/proxy
       dockerfile: Dockerfile
+    restart: always
+    depends_on:
+      - app
     ports:
       - "80:80"
       - "443:443"
-    links:
-      - app
+    networks:
+      front:
+        ipv4_address: 142.1.0.20
 
+#redis
   cache:
     image: redis
-    #command: redis-server /usr/local/etc/redis/redis.conf
-    #volumes:
-    #  - ./redis.conf:/usr/local/etc/redis/redis.conf
-    ports:
-      - "6379:6379"
+    volumes:
+      - ./conf/cache/redis.conf::/usr/local/etc/redis/redis.conf
+    networks:
+      back:
+        ipv4_address: 142.2.0.7
+    command: redis-server /usr/local/etc/redis/redis.conf
+
+
+#IP
+  networks:
+    back:
+      driver: bridge
+      ipam:
+        driver: default
+        config:
+          - subnet: 142.2.0.0/16
+
+    front:
+      driver: bridge
+      ipam:
+        driver: default
+        config:
+          - subnet: 142.1.0.0/16
 
 volumes:
   db_data:
