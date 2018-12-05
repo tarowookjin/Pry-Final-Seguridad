@@ -62,7 +62,8 @@ services:
       - "80:80"
       - "443:443"
     networks:
-      - front
+      front:
+        ipv4_address: 178.28.0.2
 
 
 #redis
