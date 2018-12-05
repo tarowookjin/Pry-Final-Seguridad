@@ -46,17 +46,17 @@ services:
       - "80:80"
       - "443:443"
     networks:
-      front:
-        ipv4_address: 142.1.0.20
+      - front
+
 
 #redis
   cache:
     image: redis
     #volumes:
     #  - ./conf/cache/redis.conf::/usr/local/etc/redis/redis.conf
-    #networks:
-    #  back:
-    #    ipv4_address: 142.2.0.7
+    networks:
+      - back:
+
     #command: redis-server /usr/local/etc/redis/redis.conf
 
 
